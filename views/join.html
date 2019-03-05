@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html> 
+    <head>
+        <meta charset="uth-8">
+        <title>회원 가입 페이지</title>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head> 
+    <body>
+        <input type="text" placeholder="이름" id="userName"><br>
+        <input type="text" placeholder="아이디" id="userId"><br>
+        <input type="password" placeholder="비밀번호" id="userPassword"><br>
+        <button type="button" onclick="join()"> 가입 </button>
+    </body>
+    <script>
+        function join() {
+            var userName = $("#userName").val();
+            var userId = $("#userId").val();
+            var userPassword = $("#userPassword").val();
+            console.log(userName, userId, userPassword);
+        }
+    //  ajax로 서버에 보냄
+    //    $.ajax({
+    //            url:'',
+    //           method:'POST',
+    //            success:function(data){
+    //                $('#time').append(data);
+    //            }
+    //        })
+
+
+    </script>
+    </html>

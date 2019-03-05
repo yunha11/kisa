@@ -1,10 +1,15 @@
 var express = require('express')
 var app = express();
 var request = require('request');
+var path = require('path');
 
 //xml parser : xml2js
-
 var parser = require('xml2js');
+
+//ejs
+console.log(path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname,'views'));
+app.set('view engine','ejs');
 
 function weather (callback) {
         request('http://www.weather.go.kr/weather/forecast/mid-term-rss3.jsp?stnld=109', function (error, response, body) {
