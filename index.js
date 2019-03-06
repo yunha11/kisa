@@ -80,7 +80,7 @@ app.post('/join', function (req, res) {
    res.json(name + " " + id + " " + password);
 })
 
-app.get('/', function (req, res) {
+app.get('/', function (req, res) { 
     request('https://openapi.open-platform.or.kr/account/balance', function (error, response, body) {
         console.log('body:', body); // Print the HTML for the Google homepage. 
         var balance = body.balance_amt;
