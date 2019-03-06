@@ -2,16 +2,11 @@ var express = require('express')
 var app = express();
 var request = require('request');
 var path = require('path');
-
 //xml parser : xml2js
 var parser = require('xml2js');
-
 //body parser 
-//var cors = require('cors');
+var cors = require('cors');
 var bodyParser = require('body-parser')
-//app.use(bodyParser.urlencoded());
-//app.use(bodyParser.json());
-//app.use(cors());
 
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
@@ -23,10 +18,10 @@ var connection = mysql.createConnection({
  
 connection.connect();
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
 
-
+app.use(cors());
 //ejs
 console.log(path.join(__dirname, 'views'));
 app.set('views', path.join(__dirname,'views'));
@@ -86,10 +81,11 @@ app.post('/join', function (req, res) {
 })
 
 app.get('/', function (req, res) {
-    request('http://www.naver.com', function (error, response, body) {
-        console.log('error:', error); // Print the error if one occurred
-        console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+    request('https://openapi.open-platform.or.kr/account/balance', function (error, response, body) {
         console.log('body:', body); // Print the HTML for the Google homepage. 
+        var balance = body.balance_amt;
+        console.log(balance);
+        res.send(body);
     });
 })
 app.get('/home', function (req, res) {
