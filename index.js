@@ -80,6 +80,7 @@ app.post('/join', function (req, res) {
         }
       });
 //   console.log(name, id, password);
+
    //클라이언트에 보여지는 내용 
    res.json(name + " " + id + " " + password);
 })
