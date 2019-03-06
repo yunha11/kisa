@@ -17,17 +17,32 @@
             var userName = $("#userName").val();
             var userId = $("#userId").val();
             var userPassword = $("#userPassword").val();
-            console.log(userName, userId, userPassword);
-        }
-    //  ajax로 서버에 보냄
-    //    $.ajax({
-    //            url:'',
-    //           method:'POST',
-    //            success:function(data){
-    //                $('#time').append(data);
-    //            }
-    //        })
+//            console.log(userName, userId, userPassword);
 
+    //  ajax로 서버에 보냄
+    // 페이지전체가아니라 필요한부분만 실시간으로 업데이트
+    //  받은데이터를 보낼 라우터를 만들고 url에 설정
+        
+        $.ajax({
+                url:'http://localhost:3000/join',
+               method:'POST',
+               responseData : {
+                   name : userName,
+                   password : userPassword,
+                   id : userId
+                },
+                dataType:'text',
+                success:function(responseData){
+                    if(responseData == 1) {
+                        alert("가입이 완료되었습니다.");
+                    }
+                }
+            })
+
+        }
+
+
+  
 
     </script>
     </html>
